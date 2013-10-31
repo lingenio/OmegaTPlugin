@@ -1,0 +1,31 @@
+<project name="OmegaT Lingenio Translation Server (LTS) Plugin" default="dist" basedir=".">
+	<property name="src" location="src"/>
+	<property name="build" location="build"/>
+	<property name="dist" location="dist"/>
+    <property name="clean_src" location="OmegaT_2.6.3_04_Source/"/>
+	
+	<target name="init">
+		<tstamp/>
+		<mkdir dir="${build}"/>
+	</target>
+	
+	<target name="compile" depends="init" description="compile the source">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath>
+                <pathelement path="${clean_src}/src;./src"/>
+                <fileset dir="${clean_src}/dist" includes="**/*.jar" />
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="dist" depends="compile" description="generate the distribution">
+		<mkdir dir="${dist}"/>
+		<jar jarfile="${dist}/LTS-OmegaT-${DSTAMP}.jar" basedir="${build}" manifest="MANIFEST.MF"/>
+	</target>
+	
+	<target name="clean">
+		<delete dir="${build}"/>
+		<delete dir="${dist}"/>
+    </target>
+
+</project>
