@@ -25,7 +25,9 @@
 	
 	<target name="clean">
 		<delete dir="${build}"/>
-		<delete dir="${dist}"/>
+        <delete>
+            <fileset dir="${dist}" includes="*.jar"/>
+        </delete>
     </target>
 
 </project>
