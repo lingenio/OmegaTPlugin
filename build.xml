@@ -10,7 +10,7 @@
 	</target>
 	
 	<target name="compile" depends="init" description="compile the source">
-		<javac srcdir="${src}" destdir="${build}">
+		<javac target="1.5" srcdir="${src}" destdir="${build}">
 			<classpath>
                 <pathelement path="${clean_src}/src;./src"/>
                 <fileset dir="${clean_src}/dist" includes="**/*.jar" />
